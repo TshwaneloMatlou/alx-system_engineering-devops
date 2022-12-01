@@ -1,2 +1,2 @@
-# alx-system_engineering-devops
-Devops repo 
+print 0-current_working_directory
+script
