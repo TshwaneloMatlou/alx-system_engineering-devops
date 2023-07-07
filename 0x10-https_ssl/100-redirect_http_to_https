@@ -46,7 +46,7 @@ frontend www-http
 
 
 frontend www-https
-	bind *:443 ssl crt /etc/haproxy/ssl/www.xica.tech.pem
+	bind *:443 ssl crt /etc/haproxy/ssl/www.tshwaneloalx.tech.pem
 	reqadd X-Forwarded-Proto:\ https
 	default_backend backendnodes
 
@@ -54,9 +54,8 @@ frontend www-https
 backend backendnodes
 	balance roundrobin
 	redirect scheme https if !{ ssl_fc }
-	server 1124-web-01 34.74.72.68:80 check
-	server 1124-web-02 54.196.204.208:80 check
-
+	server 1091-web-01 34.74.141.15:80 check
+	server 1091-web-02 34.73.24.78:80 check
 
 backend letsencrypt-backend
    	server letsencrypt 127.0.0.1:54321
