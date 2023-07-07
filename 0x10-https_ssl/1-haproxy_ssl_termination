@@ -37,7 +37,7 @@ defaults
 	errorfile 502 /etc/haproxy/errors/502.http
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
-listen 1091-lb-01
+listen 190864-lb-01
 	bind *:80
 	mode http
 	balance roundrobin
@@ -55,7 +55,7 @@ frontend www-http
          default_backend www-backend
 
 frontend www-https
-         bind *:301 ssl crt /etc/haproxy/certs/www.tshwaneloalx.tech.pem
+         bind *:443 ssl crt /etc/haproxy/certs/www.tshwaneloalx.tech.pem
          reqadd X-Forwarded-Proto:\ https
          acl letsencrypt-acl path_beg /.well-known/acme-challenge/
          use_backend letsencrypt-backend if letsencrypt-acl
