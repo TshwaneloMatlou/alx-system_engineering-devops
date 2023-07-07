@@ -39,17 +39,17 @@ defaults
   #default_backend web-backend
 #backend web-backend
  #  balance roundrobin
- #  server web-01 52.91.178.133:80 check
- #  server web-02 54.160.69.6:80 check
+ #  server web-01 54.89.27.4:80 check
+ #  server web-02 54.146.65.104:80 check
 
 
    frontend www
 	#bind *:443 ssl crt /etc/haproxy/certs/fullchain.pem
-	bind *:443 ssl crt /etc/ssl/www.yeroma.tech/www.yeroma.tech.pem
+	bind *:443 ssl crt /etc/ssl/wwwtshwaneloalx.tech/www.tshwaneloalx.tech.pem
 	mode http
         default_backend back_server
    backend back_server
         balance      roundrobin
         mode         http
-        server 128037-web-01 52.23.177.118:80 check
-        server 128037-web-02 54.160.69.6:80 check
+	server web-01 54.89.27.4:80 check
+	server web-02 54.146.65.104:80 check
