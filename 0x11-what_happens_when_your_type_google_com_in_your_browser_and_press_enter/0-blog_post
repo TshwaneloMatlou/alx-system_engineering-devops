@@ -1,0 +1,27 @@
+Introduction:
+When you type "https://www.google.com" in your browser's address bar and press Enter, a complex chain of events is set in motion behind the scenes. This blog post aims to demystify the process and take you on a journey through the various components involved in delivering the requested web page. Let's explore the step-by-step journey of a web request to https://www.google.com.
+
+DNS Request:
+The first step is the DNS (Domain Name System) request. Your browser initiates a DNS lookup to translate the human-readable domain name, "www.google.com," into an IP address. It queries a DNS server to obtain the IP address associated with the domain.
+
+TCP/IP:
+With the IP address in hand, your browser establishes a TCP (Transmission Control Protocol) connection with the web server hosting www.google.com. TCP ensures reliable data transmission by breaking the information into packets and ensuring their orderly delivery.
+
+Firewall:
+In many network setups, there is a firewall that acts as a barrier between the user's computer and the web server. The firewall enforces security policies and filters network traffic to protect against unauthorized access and potential threats.
+
+HTTPS/SSL:
+The "https://" in the URL indicates a secure connection using HTTPS (Hypertext Transfer Protocol Secure). HTTPS employs SSL (Secure Sockets Layer) or its successor, TLS (Transport Layer Security), to encrypt the data exchanged between your browser and the web server. This encryption ensures that sensitive information remains private and secure during transmission.
+
+Load-Balancer:
+For high-traffic websites like Google, load-balancers are often employed. Load-balancers distribute incoming requests across multiple servers to ensure efficient handling and prevent overwhelming a single server. They optimize resource utilization and enhance the website's availability and performance.
+
+Web Server:
+Upon receiving the request, the web server, such as Google's server, processes it. It determines the requested resource, in this case, the homepage of Google, and retrieves the necessary files, such as HTML, CSS, JavaScript, and images, that constitute the webpage.
+
+Application Server:
+In complex web applications, an application server may come into play. It handles dynamic content generation and executes server-side code written in languages like PHP, Python, or Java. The application server interacts with databases and other resources to generate customized responses based on the user's request.
+
+Database:
+For data-driven websites, a database stores and retrieves the required information. In Google's case, a vast infrastructure of databases powers their search engine, storing indexed web pages and other related data. The application server communicates with the database to fetch relevant information needed for generating search results.
+
