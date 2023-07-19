@@ -43,8 +43,8 @@ listen 190864-lb-01
 	balance roundrobin
 	option httpclose
 	option forwardfor
-	server 190864-web-01 54.89.27.4:80 check
-	server 190864-web-02 54.146.65.104:80 check
+	server 190864-web-01 18.209.178.15:80 check
+	server 190864-web-02 100.25.205.44:80 check
    	option forwardfor
    	option http-server-close
 
@@ -63,8 +63,8 @@ frontend www-https
 
 backend www-backend
         redirect scheme https if !{ ssl_fc }
-	server 1091-web-01 34.74.141.15:80 check
-	server 1091-web-02 34.73.24.78:80 check
+	server 1091-web-01 18.209.178.15:80 check
+	server 1091-web-02 100.25.205.44:80 check
 	
 
 backend letsencrypt-backend
