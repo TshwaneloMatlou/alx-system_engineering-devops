@@ -7,6 +7,6 @@ sudo apt-get -y upgrade
 sudo apt-get -y install haproxy
 sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
 sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.original
-sudo sed -i "$ a\listen 1124-lb-01\n\tbind *:80\n\tmode http\n\tbalance roundrobin\n\toption httpclose\n\toption forwardfor\n\tserver 190864-web-02 54.146.65.104:80 check\n\tserver 190864-web-01 54.89.27.4:80 check" /etc/haproxy/haproxy.cfg
+sudo sed -i "$ a\listen 190864-lb-01\n\tbind *:80\n\tmode http\n\tbalance roundrobin\n\toption httpclose\n\toption forwardfor\n\tserver 190864-web-02 100.25.205.44:80 check\n\tserver 190864-web-01 18.209.178.15:80 check" /etc/haproxy/haproxy.cfg
 sudo service haproxy start
 
