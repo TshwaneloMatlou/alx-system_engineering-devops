@@ -4,30 +4,35 @@ import requests
 import sys
 after = None
 
+def recurse(subreddit, hot_list=[], after=None):
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json"
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+    params = {'limit': 100, 'after': after}
 
-def recurse(subreddit, hot_list=[]):
-    """     Args:
-        subreddit: subreddit name
-        hot_list: list of hot titles in subreddit
-        after: last hot_item appended to hot_list
-    Returns:
-        a list containing the titles of all hot articles for the subreddit
-        or None if queried subreddit is invalid """
-    global after
-    headers = {'User-Agent': 'xica369'}
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    parameters = {'after': after}
-    response = requests.get(url, headers=headers, allow_redirects=False,
-                            params=parameters)
+    response = requests.get(url, headers=headers, params=params)
 
     if response.status_code == 200:
-        next_ = response.json().get('data').get('after')
-        if next_ is not None:
-            after = next_
-            recurse(subreddit, hot_list)
-        list_titles = response.json().get('data').get('children')
-        for title_ in list_titles:
-            hot_list.append(title_.get('data').get('title'))
-        return hot_list
+        data = response.json()
+        posts = data['data']['children']
+        
+        if len(posts) == 0:
+            return hot_list
+        
+        for post in posts:
+            title = post['data']['title']
+            hot_list.append(title)
+
+        new_after = data['data']['after']
+        return recurse(subreddit, hot_list, new_after)
     else:
-        return (None)
+        return None
+
+# Example usage
+subreddit = "python"
+result = recurse(subreddit)
+
+if result is not None:
+    for title in result:
+        print(title)
+else:
+    print("None")
